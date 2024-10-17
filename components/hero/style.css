@@ -1,0 +1,52 @@
+.hero-wrapper {
+    border-radius: 16px;
+    overflow: hidden;
+    height: calc(100vh - 124px);
+    margin-inline: 24px;
+
+    & > .hero {
+        @apply overflow-hidden text-white text-center w-full h-full relative flex justify-center items-center;
+
+        padding-inline: 24px;
+
+        & > .hero-image {
+            @apply overflow-hidden w-full h-full absolute inset-0;
+
+            z-index: -1;
+
+            & > img {
+                @apply w-full max-w-full h-full block object-cover;
+            }
+        }
+
+        & > .hero-content {
+            & > .hero-caption {
+                @apply overflow-hidden mb-8;
+
+                font-size: 18px;
+
+                & > span {
+                    @apply block;
+                }
+            }
+
+            & > .hero-title {
+                font-size: 104px;
+                font-weight: 400;
+                max-width: 11ch;
+                margin-bottom: 64px;
+                line-height: 1.2;
+                letter-spacing: -0.03em;
+
+                & > span {
+                    @apply overflow-hidden block;
+                    line-height: 1.05;
+
+                    & > span {
+                        @apply block;
+                    }
+                }
+            }
+        }
+    }
+}

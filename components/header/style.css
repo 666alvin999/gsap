@@ -1,0 +1,8 @@
+.header {
+    @apply w-full h-[100px] flex justify-between items-center;
+    padding-inline: 24px;
+
+    & > .header-logo {
+        font-size: 40px;
+    }
+}

@@ -1,0 +1,21 @@
+.preloader {
+    @apply overflow-hidden opacity-100;
+
+    & > .preloader-text {
+        @apply overflow-hidden text-white fixed top-1/2 left-1/2;
+
+        transform: translate(-50%, -50%);
+        line-height: 1.1;
+        z-index: 3;
+
+        & > span {
+            @apply block;
+        }
+    }
+
+    & > .preloader-background {
+        @apply bg-black text-white h-[100vh] fixed inset-0 flex justify-center items-center;
+
+        z-index: 2;
+    }
+}
