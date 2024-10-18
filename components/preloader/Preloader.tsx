@@ -11,7 +11,6 @@ const Preloader = ({ timeline }: { timeline: gsap.core.Timeline}) => {
             yPercent: 100,
         });
 
-
         const slideTextReveal = contextSafe!(() => {
             const tl = gsap.timeline({defaults: {ease: "power2.out"}});
 

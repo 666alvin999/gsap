@@ -6,9 +6,16 @@ import {gsap} from "gsap";
 
 const Hero = ({timeline}: { timeline: gsap.core.Timeline }) => {
 
-    useGSAP(() => {
-        const initialState = gsap.set(".hero-caption > span, .hero-title > span > span", {
-            yPercent: 100
+    useGSAP((context, contextSafe) => {
+
+        const initialState = contextSafe!(() => {
+            gsap.set(".hero-caption > span, .hero-title > span > span", {
+                yPercent: 100
+            });
+
+            gsap.set("hero-button", {
+                borderRadius: 0
+            });
         });
 
         const slideTextReveal = gsap.to(".hero-caption > span, .hero-title > span > span", {
@@ -19,7 +26,7 @@ const Hero = ({timeline}: { timeline: gsap.core.Timeline }) => {
         timeline && timeline
             .add(initialState)
             .add(slideTextReveal);
-    })
+    }, [timeline])
 
     return (
         <>
@@ -40,7 +47,7 @@ const Hero = ({timeline}: { timeline: gsap.core.Timeline }) => {
                                 <span>ride in style.</span>
                             </span>
                         </h1>
-                        <button className="hero-button button button--white">Explore</button>
+                        <button className="hero-button button button-white">Explore</button>
                     </div>
                 </section>
             </div>
