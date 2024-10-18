@@ -1,8 +1,8 @@
 .preloader {
-    @apply overflow-hidden opacity-100;
+    @apply overflow-hidden opacity-0;
 
     & > .preloader-text {
-        @apply overflow-hidden text-white fixed top-1/2 left-1/2;
+        @apply invisible overflow-hidden text-white fixed top-1/2 left-1/2;
 
         transform: translate(-50%, -50%);
         line-height: 1.1;

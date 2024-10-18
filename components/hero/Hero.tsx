@@ -1,12 +1,25 @@
 import "./style.css";
 
 import HeroImage from "@/components/hero/component/HeroImage";
+import {useGSAP} from "@gsap/react";
+import {gsap} from "gsap";
 
-interface HeroProps {
-    timeline: any
-}
+const Hero = ({timeline}: { timeline: gsap.core.Timeline }) => {
 
-const Hero = ({timeline}: HeroProps) => {
+    useGSAP(() => {
+        const initialState = gsap.set(".hero-caption > span, .hero-title > span > span", {
+            yPercent: 100
+        });
+
+        const slideTextReveal = gsap.to(".hero-caption > span, .hero-title > span > span", {
+            yPercent: 0,
+            delay: 3.3
+        });
+
+        timeline && timeline
+            .add(initialState)
+            .add(slideTextReveal);
+    })
 
     return (
         <>
@@ -19,12 +32,13 @@ const Hero = ({timeline}: HeroProps) => {
                             <span>More details. More fun.</span>
                         </p>
                         <h1 className="hero-title">
-						<span>
-							<span>A new way to </span>
-						</span>
                             <span>
-							<span>ride in style.</span>
-						</span>
+                                <span>A new way to </span>
+                            </span>
+
+                            <span>
+                                <span>ride in style.</span>
+                            </span>
                         </h1>
                         <button className="hero-button button button--white">Explore</button>
                     </div>

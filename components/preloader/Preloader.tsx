@@ -4,17 +4,22 @@ import "./style.css";
 import {useGSAP} from "@gsap/react";
 import {gsap} from "gsap";
 
-const Preloader = ({ timeline }) => {
+const Preloader = ({ timeline }: { timeline: gsap.core.Timeline}) => {
 
-    useGSAP(() => {
+    useGSAP((context, contextSafe) => {
         const initialTextState = gsap.set(".preloader-text > span", {
-            yPercent: 100
-        })
+            yPercent: 100,
+        });
 
-        const slideTextReveal = () => {
-            const timeline = gsap.timeline({defaults: {ease: "power2.out"}});
 
-            timeline
+        const slideTextReveal = contextSafe!(() => {
+            const tl = gsap.timeline({defaults: {ease: "power2.out"}});
+
+            tl
+                .from(".preloader-text", {
+                    ease: "linear",
+                    autoAlpha: 0
+                })
                 .to(".preloader-text > span", {
                     yPercent: 0,
                     delay: 0.5
@@ -26,14 +31,15 @@ const Preloader = ({ timeline }) => {
                 .to(".preloader-background", {
                     yPercent: -100,
                     duration: 1.5,
-                    ease: "power4.inOut"
-                }, "<")
-        }
+                    ease: "power4.inOut",
+                }, "<");
 
-        timeline
+        });
+
+        timeline && timeline
             .add(initialTextState)
             .add(slideTextReveal);
-    });
+    }, [timeline]);
 
     return (
         <>
