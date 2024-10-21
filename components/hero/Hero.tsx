@@ -20,12 +20,11 @@ const Hero = ({timeline}: { timeline: gsap.core.Timeline }) => {
 
         const slideTextReveal = gsap.to(".hero-caption > span, .hero-title > span > span", {
             yPercent: 0,
-            delay: 3.3
         });
 
         timeline && timeline
-            .add(initialState)
-            .add(slideTextReveal);
+            .add(initialState, 0)
+            .add(slideTextReveal, ">");
     }, [timeline])
 
     return (

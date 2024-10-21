@@ -1,5 +1,5 @@
 .preloader {
-    @apply overflow-hidden opacity-0;
+    @apply overflow-hidden;
 
     & > .preloader-text {
         @apply invisible overflow-hidden text-white fixed top-1/2 left-1/2;
